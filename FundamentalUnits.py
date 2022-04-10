@@ -193,8 +193,6 @@ class FundUnit(object):
         if type(other) == FundUnit:
             tempclass = copy.deepcopy(self)
             tempclass.set_value(self.value * other.value)
-
-            #
             tempclass.length_power = self.length_power + other.length_power
             tempclass.mass_power = self.mass_power + other.mass_power
             tempclass.time_power = self.time_power + other.time_power
