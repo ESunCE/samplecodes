@@ -129,7 +129,7 @@ class FundUnit(object):
         return self.light_intensity_power
     #overloading
     def __add__(self, other):
-        #crating a checklist for comparison of object's attributes and the other object
+        #creating a checklist for comparison of object's attributes and the other object
         length_unit_checker = self.length_unit == other.length_unit
         mass_unit_checker = self.mass_unit == other.mass_unit
         time_unit_checker = self.time_unit == other.time_unit
