@@ -5,13 +5,14 @@ Created on Thu Apr  7 11:11:25 2022
 @author: ESunCe
 """
 #simple arithmetic operations for fundamental units in SI system by bundling data with dimension
+#importing module copy for creating independent copies of the object via deep copy
 import copy
 
 
 class FundUnit(object):
     # null values
     value = 0
-    # null dimensions
+    # initial dimensions
     length_unit = 'm'
     mass_unit = 'kg'
     time_unit = 's'
@@ -57,7 +58,7 @@ class FundUnit(object):
     def set_light_intensity_unit(self, light_intensity_unit: str):
         self.light_intensity_unit = light_intensity_unit
 
-    # power input
+    # power set
     def set_length_power(self, length_power):
         self.length_power = length_power
 
@@ -126,9 +127,9 @@ class FundUnit(object):
 
     def get_light_intensity_power(self):
         return self.light_intensity_power
-
+    #overloading
     def __add__(self, other):
-
+        #crating a checklist for comparison of object's attributes and the other object
         length_unit_checker = self.length_unit == other.length_unit
         mass_unit_checker = self.mass_unit == other.mass_unit
         time_unit_checker = self.time_unit == other.time_unit
@@ -193,7 +194,7 @@ class FundUnit(object):
             tempclass = copy.deepcopy(self)
             tempclass.set_value(self.value * other.value)
 
-            ##
+            #
             tempclass.length_power = self.length_power + other.length_power
             tempclass.mass_power = self.mass_power + other.mass_power
             tempclass.time_power = self.time_power + other.time_power
@@ -203,7 +204,7 @@ class FundUnit(object):
             tempclass.light_intensity_power = self.light_intensity_power + other.light_intensity_power
 
             return tempclass
-
+        #for multiplication of ints and floats that are dimensionless
         elif type(other) == int or type(other) == float:
             tempclass = copy.deepcopy(self)
             tempclass.value *= other
